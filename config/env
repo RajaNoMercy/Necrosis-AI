@@ -1,1 +1,112 @@
+# ============================================================
+#  NECROSIS AI — ENVIRONMENT CONFIGURATION v3.0
+#  ⚠️  JANGAN SHARE FILE INI KE PUBLIC / JANGAN UPLOAD KE GIT
+# ============================================================
 
+# ── SERVER ──────────────────────────────────────────────────
+PORT=3000
+NODE_ENV=development
+# Isi dengan domain frontend kamu (pisah koma jika banyak)
+# ALLOWED_ORIGINS=https://domain-kamu.com
+
+# ── SESSION (WAJIB GANTI!) ──────────────────────────────────
+SESSION_SECRET=ganti_dengan_string_random_panjang_minimal_32_karakter
+
+# ── GOOGLE OAUTH ────────────────────────────────────────────
+# Daftar: https://console.cloud.google.com/apis/credentials
+GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_CALLBACK_URL=http://localhost:3000/auth/google/callback
+
+# ── FACEBOOK OAUTH ──────────────────────────────────────────
+# Daftar: https://developers.facebook.com/apps/
+FACEBOOK_APP_ID=your-facebook-app-id
+FACEBOOK_APP_SECRET=your-facebook-app-secret
+FACEBOOK_CALLBACK_URL=http://localhost:3000/auth/facebook/callback
+
+# ── TWITTER / X OAUTH ───────────────────────────────────────
+# Daftar: https://developer.twitter.com/en/portal
+TWITTER_CONSUMER_KEY=your-twitter-consumer-key
+TWITTER_CONSUMER_SECRET=your-twitter-consumer-secret
+TWITTER_CALLBACK_URL=http://localhost:3000/auth/twitter/callback
+
+# ── RECAPTCHA v3 ────────────────────────────────────────────
+# Daftar: https://www.google.com/recaptcha/admin/create → reCAPTCHA v3
+RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
+
+# ════════════════════════════════════════════════════
+# LLM PROVIDERS (isi minimal 1)
+# ════════════════════════════════════════════════════
+
+# GROQ — https://console.groq.com
+GROQ_API_KEY=your-groq-api-key
+GROQ_API_URL=https://api.groq.com/openai/v1/chat/completions
+GROQ_MODEL_DEFAULT=llama-3.3-70b-versatile
+GROQ_MODEL_FAST=llama3-8b-8192
+GROQ_MODEL_PRO=llama-3.1-70b-versatile
+
+# GEMINI — https://aistudio.google.com
+GEMINI_API_KEY=your-gemini-api-key
+GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/models
+GEMINI_MODEL=gemini-2.0-flash-lite
+
+# CEREBRAS — https://cloud.cerebras.ai
+CEREBRAS_API_KEY=your-cerebras-api-key
+CEREBRAS_API_URL=https://api.cerebras.ai/v1/chat/completions
+CEREBRAS_MODEL=llama-3.3-70b
+
+# MISTRAL — https://console.mistral.ai
+MISTRAL_API_KEY=your-mistral-key-here
+MISTRAL_API_URL=https://api.mistral.ai/v1/chat/completions
+MISTRAL_MODEL=mistral-small-latest
+
+# OPENROUTER — https://openrouter.ai
+OPENROUTER_API_KEY=your-openrouter-key-here
+OPENROUTER_API_URL=https://openrouter.ai/api/v1/chat/completions
+OPENROUTER_MODEL=meta-llama/llama-3.1-8b-instruct:free
+OPENROUTER_MODEL_PRO=deepseek/deepseek-chat-v3-0324:free
+OPENROUTER_REFERER=https://necrosis-ai.vercel.app
+
+# SAMBANOVA — https://cloud.sambanova.ai
+SAMBANOVA_API_KEY=your-sambanova-key-here
+SAMBANOVA_API_URL=https://api.sambanova.ai/v1/chat/completions
+SAMBANOVA_MODEL=Meta-Llama-3.3-70B-Instruct
+
+# NVIDIA NIM — https://build.nvidia.com
+NVIDIA_API_KEY=your-nvidia-key-here
+NVIDIA_API_URL=https://integrate.api.nvidia.com/v1/chat/completions
+NVIDIA_MODEL=meta/llama-3.3-70b-instruct
+
+# HUGGING FACE — https://huggingface.co/settings/tokens
+HUGGINGFACE_API_KEY=your-huggingface-key-here
+HUGGINGFACE_API_URL=https://api-inference.huggingface.co/models
+HUGGINGFACE_MODEL=meta-llama/Llama-3.3-70B-Instruct
+
+# ── IMAGE GENERATION ──────────────────────────────────────
+POLLINATIONS_URL=https://image.pollinations.ai/prompt
+HUGGINGFACE_IMAGE_MODEL=black-forest-labs/FLUX.1-schnell
+
+# ── SEARCH / WEB ──────────────────────────────────────────
+DDGO_SEARCH_URL=https://api.duckduckgo.com
+WIKIPEDIA_URL=https://id.wikipedia.org/w/api.php
+TAVILY_API_KEY=your-tavily-key-here
+TAVILY_API_URL=https://api.tavily.com/search
+JINA_API_KEY=your-jina-key-here
+JINA_READER_URL=https://r.jina.ai
+
+# ── RATE LIMITING ─────────────────────────────────────────
+RATE_LIMIT_WINDOW_MS=60000
+RATE_LIMIT_MAX_REQUESTS=30
+
+# ── MEMORY / HISTORY ──────────────────────────────────────
+MAX_MEMORY_MESSAGES=50
+MAX_CONTEXT_TOKENS=4000
+MEMORY_SUMMARY_TRIGGER=20
+
+# ── FEATURE FLAGS ─────────────────────────────────────────
+ENABLE_STREAMING=true
+ENABLE_MEMORY=true
+ENABLE_SEARCH_MODE=true
+ENABLE_IMAGE_GEN=true
+ENABLE_CODE_EXEC=false
+ENABLE_LOGGING=true
