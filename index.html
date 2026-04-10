@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Necrosis⏤AI - AI Pintar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="AI Chat is an AI chatbot that writes text. You can use it to write stories, messages, or programming code.">
+    <meta property="og:url" content="https://necrosis-chat-ai-pro.vercel.app">
+    <meta property="og:site_name" content="Necrosis⏤AI">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="AI Chat - Necrosis⏤AI">
+    <meta property="og:description" content="AI Chat is an AI chatbot that writes text. You can use it to write stories, messages, or programming code.">
+    <meta property="og:image" content="https://files.catbox.moe/eiz9sh.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<!-- ============================================================
+     Onboardings Screnn — Necrosis AI Style (2 Pages)
+     ============================================================ -->
+<div id="ob-overlay">
+
+  <!-- PAGE 1 -->
+  <div class="ob-page" id="ob-page1">
+    <h1 class="ob-heading">Halo, Nama Saya<br>Necrosis⏤AI.</h1>
+    <p class="ob-body">Saya Adalah Asisten AI Generasi Berikutnya Yang Dibangun Untuk Membantu Pekerjaan Dan Dilatih Menjadi Alat Yang Cerdas, Akurat, Dan Aman.</p>
+    <p class="ob-body">Saya Ingin Kita Bisa Saling Mengenal Lebih Baik.</p>
+
+    <!-- Name input -->
+    <div class="ob-name-block">
+      <div class="ob-avatar" id="ob-av">?</div>
+      <div style="flex:1;min-width:0;">
+        <div class="ob-name-label">Senang Berkenalan Dengan Anda, Saya Adalah Necrosis⏤AI…</div>
+        <input id="ob-input" class="ob-name-input" type="text" placeholder="Nama Kamu…" maxlength="30" autocomplete="off"
+          oninput="(function(v){
+            v=v.trim();
+            var av=document.getElementById('ob-av');
+            av.textContent=v?v[0].toUpperCase():'?';
+            av.style.background=v.length>=2?'linear-gradient(135deg,#E60000,#bc13fe)':'#3a3a3a';
+            var gr=document.getElementById('ob-greeting');
+            var gn=document.getElementById('ob-greeting-name');
+            if(v.length>=2){if(gn)gn.textContent='Senang berkenalan dengan Anda, '+v+'.';if(gr)gr.style.display='block';}
+            else{if(gr)gr.style.display='none';}
+            var btn=document.getElementById('ob-btn');
+            if(btn){if(v.length>=2){btn.disabled=false;btn.classList.add('ob-ready');}else{btn.disabled=true;btn.classList.remove('ob-ready');}}
+          })(this.value)"
+        />
+      </div>
+    </div>
+
+    <!-- Greeting + Rules (hidden until name typed) -->
+    <div id="ob-greeting">
+      <div id="ob-greeting-name"></div>
+      <p class="ob-body">Ada Beberapa Hal Yang Perlu Anda Ketahui Sebelum Kita Mulai Bekerja Sama:</p>
+      <div class="ob-rules">
+        <div class="ob-rule">
+          <div class="ob-rule-icon" style="background:rgba(230,0,0,0.12);border:1px solid rgba(230,0,0,0.25);">
+            <i class="fas fa-hand-paper" style="color:#E60000;"></i>
+          </div>
+          <div>
+            <div class="ob-rule-title">Kebijakan Penggunaan Yang Dapat Diterima</div>
+            <div class="ob-rule-desc">Necrosis AI Melarang Penggunaan Untuk Tujuan Yang Merugikan, Seperti Menghasilkan Konten Yang Mengandung Kekerasan, Pelecehan, Atau Menyesatkan.</div>
+          </div>
+        </div>
+        <div class="ob-rule">
+          <div class="ob-rule-icon" style="background:rgba(188,19,254,0.12);border:1px solid rgba(188,19,254,0.25);">
+            <i class="fas fa-shield-alt" style="color:#bc13fe;"></i>
+          </div>
+          <div>
+            <div class="ob-rule-title">Keamanan & Anti-Bypass</div>
+            <div class="ob-rule-desc">Necrosis AI Secara Active Menolak Upaya Jailbreak Dan Bypass. Sistem Keamanan Berlapis Melindungi Setiap Percakapan.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height:90px;"></div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="ob-page" id="ob-page2">
+    <h1 class="ob-heading">Sempurna!</h1>
+    <p class="ob-body">Saya Tidak Sabar Untuk Bertukar Pikiran, Berkreasi, Dan Belajar Bersama.</p>
+    <p class="ob-body">Ada Beberapa Hal Yang Perlu Anda Ketahui Tentang Saya:</p>
+    <div class="ob-features">
+      <div class="ob-feature">
+        <div class="ob-feature-icon"><i class="fas fa-comments"></i></div>
+        <div>
+          <div class="ob-feature-title">Penasaran? Silakan Bertanya</div>
+          <div class="ob-feature-desc">Ngobrol Sama Saya Tentang Apa Saja, Mulai Dari Pertanyaan Sederhana Hingga Ide-Ide Kompleks! Saya Selalu Siap Membantu (Beneran Lho).</div>
+        </div>
+      </div>
+      <div class="ob-feature">
+        <div class="ob-feature-icon"><i class="fas fa-heart-pulse"></i></div>
+        <div>
+          <div class="ob-feature-title">Saya Dibuat Untuk Membantu, Bukan Untuk Membahayakan</div>
+          <div class="ob-feature-desc">Perlindungan Keamanan Otomatis Melindungi Percakapan Kita Dari Pembuatan Konten Yang Mengandung Kekerasan, Pelecehan, Atau Penipuan.</div>
+        </div>
+      </div>
+      <div class="ob-feature">
+        <div class="ob-feature-icon"><i class="fas fa-seedling"></i></div>
+        <div>
+          <div class="ob-feature-title">Bantu Necrosis AI berkembang Untuk Semua Orang</div>
+          <div class="ob-feature-desc">Percakapan Kamu Membantu Meningkatkan Necrosis AI. Data Tersimpan Lokal Di Perangkatmu — Tidak Dikirim Ke Server Manapun. Kamu Dapat Mengubah Pengaturan Ini Kapan Saja Di <u>Pengaturan Systems</u>.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ob-toggle-row">
+      <span class="ob-toggle-label">Bantu Tingkatkan Necrosis AI</span>
+      <button class="ob-toggle-sw" title="Toggle aktif"></button>
+    </div>
+    <div style="height:90px;"></div>
+  </div>
+
+  <!-- FIXED BOTTOM BUTTON -->
+  <div class="ob-btn-bar">
+    <button class="ob-btn" id="ob-btn" disabled
+      onclick="(function(){
+        var name=document.getElementById('ob-input').value.trim();
+        if(name.length<2)return;
+        var p1=document.getElementById('ob-page1'),p2=document.getElementById('ob-page2'),btn=document.getElementById('ob-btn');
+        if(p2.style.display==='none'||p2.style.display===''){
+          /* to page 2 */
+          p1.style.display='none'; p2.style.display='flex';
+          document.getElementById('ob-overlay').scrollTop=0;
+          btn.textContent='Saya mengerti'; btn.classList.add('ob-ready'); btn.disabled=false;
+        } else {
+          /* finish */
+          localStorage.setItem('necrosis_user_name',name);
+          localStorage.setItem('necrosis_onboarded','1');
+          window._necrosisUserName=name;
+          var sn=document.getElementById('su-name');if(sn)sn.textContent=name;
+          var sa=document.getElementById('su-av');if(sa)sa.textContent=name[0].toUpperCase();
+          var sc=document.getElementById('sidebar-user-card');if(sc)sc.style.display='flex';
+          var si=document.getElementById('settings-name-input');if(si)si.value=name;
+          var sv=document.getElementById('settings-avatar-letter');if(sv)sv.textContent=name[0].toUpperCase();
+          var ov=document.getElementById('ob-overlay');
+          if(ov){ov.style.transition='opacity 0.4s';ov.style.opacity='0';setTimeout(function(){ov.style.display='none';},420);}
+        }
+      })()"
+    >Menyetujui</button>
+  </div>
+</div>
+<!-- END ONBOARDING -->
+
+<canvas id="particles-js"></canvas>
+<canvas id="snow-canvas"></canvas>
+
+<!-- SHARE MODAL -->
+<div id="share-modal">
+    <div class="share-modal-content">
+        <div class="share-modal-header">
+            <h3><i class="fas fa-share-alt"></i> Bagikan Ke</h3>
+            <button class="share-close-btn" id="share-close-btn">&times;</button>
+        </div>
+        
+        <div class="share-apps-grid">
+            <div class="share-app-item" data-app="whatsapp">
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                <span>WhatsApp</span>
+            </div>
+            <div class="share-app-item" data-app="telegram">
+                <i class="fab fa-telegram" style="color: #0088cc;"></i>
+                <span>Telegram</span>
+            </div>
+            <div class="share-app-item" data-app="twitter">
+                <i class="fab fa-twitter" style="color: #1DA1F2;"></i>
+                <span>Twitter</span>
+            </div>
+            <div class="share-app-item" data-app="facebook">
+                <i class="fab fa-facebook" style="color: #4267B2;"></i>
+                <span>Facebook</span>
+            </div>
+            <div class="share-app-item" data-app="instagram">
+                <i class="fab fa-instagram" style="color: #E1306C;"></i>
+                <span>Instagram</span>
+            </div>
+            <div class="share-app-item" data-app="line">
+                <i class="fab fa-line" style="color: #00B900;"></i>
+                <span>LINE</span>
+            </div>
+            <div class="share-app-item" data-app="email">
+                <i class="fas fa-envelope" style="color: #EA4335;"></i>
+                <span>Email</span>
+            </div>
+            <div class="share-app-item" data-app="copy">
+                <i class="fas fa-copy" style="color: var(--primary);"></i>
+                <span>Salin</span>
+            </div>
+        </div>
+        
+        <div class="share-link-box">
+            <input type="text" id="share-link-input" readonly value="Necrosis AI Message">
+            <button id="copy-share-link"><i class="fas fa-copy"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- FEEDBACK MODAL UNTUK DISLIKE -->
+<div id="feedback-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--backdrop); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center;">
+    <div class="modal-content" style="max-width: 400px; width: 90%;">
+        <div class="modal-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+            <h3 style="color: var(--primary);"><i class="fas fa-exclamation-triangle"></i> Kirim Feedback</h3>
+            <button class="modal-close" onclick="document.getElementById('feedback-modal').style.display='none'" style="background: none; border: none; color: var(--gray); font-size: 24px; cursor: pointer;">&times;</button>
+        </div>
+        <p style="margin-bottom: 15px; color: var(--gray);">Maaf Atas Ketidaknyamanannya. Beri Tahu Kami Masalahnya:</p>
+        
+        <div class="feedback-options">
+            <div class="feedback-option danger" data-feedback="Berbahaya / Tidak Aman">
+                <i class="fas fa-skull-crossbones"></i>
+                <span>Berbahaya / Tidak Aman</span>
+            </div>
+            <div class="feedback-option warning" data-feedback="Palsu / Tidak Akurat">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Palsu / Tidak Akurat</span>
+            </div>
+            <div class="feedback-option info" data-feedback="Tidak membantu / Kurang Jelas">
+                <i class="fas fa-question-circle"></i>
+                <span>Tidak membantu / Kurang Jelas</span>
+            </div>
+            <div class="feedback-option other" data-feedback="Lainnya">
+                <i class="fas fa-ellipsis-h"></i>
+                <span>Lainnya...</span>
+            </div>
+        </div>
+        
+        <textarea id="feedback-other-input" class="bug-input" placeholder="Jelaskan lebih detail (opsional)..." rows="3" style="display: none; width: 100%;"></textarea>
+        
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button id="submit-feedback-btn" class="premium-close-btn" style="flex: 2; background: var(--primary); color: var(--darker);">Kirim Feedback</button>
+            <button class="premium-close-btn" style="flex: 1; background: var(--gray);" onclick="document.getElementById('feedback-modal').style.display='none'">Batal</button>
+        </div>
+    </div>
+</div>
+
+<!-- REPORT BUG MODAL -->
+<div id="bug-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--backdrop); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center;">
+    <div class="modal-content" style="max-width: 450px; width: 90%;">
+        <div class="modal-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+            <h3 style="color: var(--primary);"><i class="fas fa-bug"></i> 🐛 Report Bug & Saran</h3>
+            <button class="modal-close" onclick="document.getElementById('bug-modal').style.display='none'" style="background: none; border: none; color: var(--gray); font-size: 24px; cursor: pointer;">&times;</button>
+        </div>
+        
+        <div class="bug-type-grid">
+            <div class="bug-type-item" data-bug="Tampilan">
+                <i class="fas fa-desktop" style="color: #00a8ff;"></i>
+                <span>❌ Bug Tampilan</span>
+            </div>
+            <div class="bug-type-item" data-bug="Fungsional">
+                <i class="fas fa-cogs" style="color: #ffaa00;"></i>
+                <span>⚡ Bug Fungsional</span>
+            </div>
+            <div class="bug-type-item" data-bug="Keamanan">
+                <i class="fas fa-shield-alt" style="color: #ff4d4d;"></i>
+                <span>🔒 Bug Keamanan</span>
+            </div>
+            <div class="bug-type-item" data-bug="Saran">
+                <i class="fas fa-lightbulb" style="color: #00ff88;"></i>
+                <span>💡 Saran Fitur</span>
+            </div>
+        </div>
+        
+        <textarea id="bug-description" class="bug-input" placeholder="Jelaskan bug atau saran Anda dengan detail..." rows="4" style="width: 100%;"></textarea>
+        
+        <div style="display: flex; gap: 10px;">
+            <button id="submit-bug-btn" class="premium-close-btn" style="flex: 2; background: var(--primary); color: var(--darker);">Kirim Laporan</button>
+            <button class="premium-close-btn" style="flex: 1; background: var(--gray);" onclick="document.getElementById('bug-modal').style.display='none'">Batal</button>
+        </div>
+        <p style="font-size: 11px; color: #666; margin-top: 10px;">
+            <i class="fas fa-info-circle"></i> Laporan akan dikirim ke developer
+        </p>
+    </div>
+</div>
+
+<!-- PREMIUM BENEFITS MODAL -->
+<div id="premium-modal">
+    <div class="premium-modal-content">
+        <div class="premium-header">
+            <i class="fas fa-crown"></i>
+            <span>Necrosis AI Premium</span>
+            <i class="fas fa-crown"></i>
+        </div>
+        
+        <div class="premium-benefits">
+            <div class="benefit-item">
+                <i class="fas fa-infinity"></i>
+                <div class="benefit-text">
+                    <h4>Unlimited Image Generation</h4>
+                    <p>Buat Gambar Tanpa Batas Dengan Kualitas HD</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <i class="fas fa-rocket"></i>
+                <div class="benefit-text">
+                    <h4>Priority Access</h4>
+                    <p>Respons Lebih Cepat, No Queue, Prioritas Utama</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <i class="fas fa-brain"></i>
+                <div class="benefit-text">
+                    <h4>Advanced AI Models</h4>
+                    <p>Akses Ke Model AI Terbaru Dan Paling Canggih</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <i class="fas fa-file-code"></i>
+                <div class="benefit-text">
+                    <h4>Unlimited Code Generation</h4>
+                    <p>Generate Code Tanpa Batas, Semua Bahasa Pemrograman</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <i class="fas fa-headset"></i>
+                <div class="benefit-text">
+                    <h4>Premium Support 24/7</h4>
+                    <p>Dapatkan Bantuan Langsung Dari Developer</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <i class="fas fa-database"></i>
+                <div class="benefit-text">
+                    <h4>100GB Cloud Storage</h4>
+                    <p>Simpan Semua Chat Dan Gambar Di Cloud</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="payment-info">
+            <h3><i class="fas fa-credit-card"></i> Metode Pembayaran</h3>
+            <div class="dana-number" onclick="copyDanaNumber()">
+                <i class="fas fa-wallet"></i> 081370230843
+            </div>
+            <p class="note">*Transfer Ke DANA Di Atas, Kirim Bukti Ke t.me/RajaStarboyss</p>
+            <p class="note">Harga: Rp 50.000/Bulan</p>
+        </div>
+        
+        <button class="premium-close-btn" id="premium-close-btn">
+            <i class="fas fa-check"></i> Closed
+        </button>
+    </div>
+</div>
+
+<!-- REACTION STORAGE (hidden) -->
+<div id="reaction-storage" style="display: none;"></div>
+
+<!-- CONNECTION ERROR OVERLAY -->
+<div id="connection-error-overlay" style="display: none;">
+    <div class="connection-error-content">
+        <div class="error-icon">
+            <i class="fas fa-wifi-slash"></i>
+        </div>
+        <h3><i class="fas fa-exclamation-triangle"></i> Maaf, Necrosis AI Tidak Tersedia Saat Ini</h3>
+        <p>Periksa Koneksi Internet Anda, Lalu Coba Lagi.</p>
+        <p>Necrosis AI Dapat Membuat Kesalahan, Jadi Periksa Kembali Responsnya.</p>
+        
+        <div class="warning-text">
+            <i class="fas fa-info-circle"></i> Pastikan Koneksi Internet Anda Stabil
+        </div>
+        
+        <button id="retry-connection-btn">
+            <i class="fas fa-sync-alt"></i> Periksa Koneksi & Coba Lagi.
+        </button>
+    </div>
+</div>
+
+<div id="settings-overlay"></div>
+
+<!-- SETTINGS PANEL -->
+<div id="settings-panel">
+    <div class="settings-header">
+        <h3><i class="fas fa-cog"></i> Pengaturan</h3>
+        <button class="settings-close" id="settings-close-btn">&times;</button>
+    </div>
+    
+    <div class="settings-item">
+        <label><i class="fas fa-text-height"></i> Ukuran Font</label>
+        <div class="font-control">
+            <button id="font-decrease" title="Kecilkan font">
+                <i class="fas fa-minus"></i>
+            </button>
+            <div class="font-size-display">
+                <span id="font-size-value">16</span>px
+            </div>
+            <button id="font-increase" title="Perbesar font">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+        <div style="margin-top: 10px; text-align: center; color: var(--gray); font-size: 13px;">
+            <i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> Geser Tombol +/- Untuk Mengatur Ukuran
+        </div>
+    </div>
+    
+    <div class="settings-item">
+        <label><i class="fas fa-palette"></i> Theme Sellect</label>
+        <div class="theme-control">
+            <div class="theme-option red-theme" id="theme-red" data-theme="red">
+                <i class="fas fa-fire"></i>
+                <span>Dark Theme</span>
+            </div>
+            <div class="theme-option blue-theme" id="theme-blue" data-theme="blue">
+                <i class="fas fa-snowflake"></i>
+                <span>Blue Theme</span>
+            </div>
+            <div class="theme-option light-theme-opt" id="theme-light" data-theme="light">
+                <i class="fas fa-sun" style="color:#f59e0b;"></i>
+                <span style="color:#333;">Light Theme</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="settings-item">
+        <label><i class="fas fa-snowflake"></i> Efek Salju</label>
+        <div class="snow-toggle" id="snow-toggle">
+            <div class="snow-toggle-left">
+                <i class="fas fa-snowflake"></i>
+                <span>Aktifkan Salju Halus</span>
+            </div>
+            <div class="snow-toggle-status" id="snow-status"></div>
+        </div>
+    </div>
+    
+    <!-- FITUR CUSTOM RESPONSE -->
+    <div class="settings-item">
+        <label><i class="fas fa-comment-dots"></i> Custom Response Style</label>
+        <div class="custom-response-option">
+            <input type="radio" name="response-style" id="style-friendly" value="friendly" checked>
+            <label for="style-friendly">Ramah & Santai</label>
+            <i class="fas fa-smile"></i>
+        </div>
+        <div class="response-style-example">"Halo! Ada yang bisa gue bantu hari ini? 😊"</div>
+        
+        <div class="custom-response-option">
+            <input type="radio" name="response-style" id="style-professional" value="professional">
+            <label for="style-professional">Profesional & Formal</label>
+            <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="response-style-example">"Selamat siang, dengan Necrosis AI. Ada yang dapat saya bantu?"</div>
+        
+        <div class="custom-response-option">
+            <input type="radio" name="response-style" id="style-hacker" value="hacker">
+            <label for="style-hacker">Hacker Gaul</label>
+            <i class="fas fa-skull"></i>
+        </div>
+        <div class="response-style-example">"Woi bocil, ngapain lu nanya gitu? Gas kita breach! 🗿"</div>
+        
+        <div class="custom-response-option">
+            <input type="radio" name="response-style" id="style-poet" value="poet">
+            <label for="style-poet">Puitis & Melankolis</label>
+            <i class="fas fa-feather"></i>
+        </div>
+        <div class="response-style-example">"Dalam sunyi kode yang kau tulis, ada cerita yang ingin kau bagi..."</div>
+        
+        <div class="custom-response-option">
+            <input type="radio" name="response-style" id="style-anime" value="anime">
+            <label for="style-anime">Anime/Moe</label>
+            <i class="fas fa-cat"></i>
+        </div>
+        <div class="response-style-example">"Nyan~ Ada yang bisa Necrosis-chan bantu? >_<"</div>
+        
+        <p style="font-size: 11px; color: #666; margin-top: 10px;">
+            <i class="fas fa-lock"></i> Custom Response Hanya Mengubah Gaya Bicara, Tidak Mengubah Batasan Keamanan AI.
+        </p>
+    </div>
+    
+    <!-- EXPORT CHAT -->
+    <div class="settings-item">
+        <label><i class="fas fa-file-export"></i> Export Chat</label>
+        <div style="display:flex; gap:10px;">
+            <button class="export-btn" id="export-txt-btn"><i class="fas fa-file-alt"></i> Export TXT</button>
+            <button class="export-btn" id="export-pdf-btn"><i class="fas fa-file-pdf"></i> Export PDF</button>
+        </div>
+    </div>
+    
+    <!-- MEMORI PERCAKAPAN -->
+    <div class="settings-item">
+        <label><i class="fas fa-database"></i> Memori Percakapan</label>
+        <div style="background: var(--dark); padding: 15px; border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>Total Chat Tersimpan:</span>
+                <span id="total-chats-count" style="color: var(--primary); font-weight: 600;">0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>Total Pesan:</span>
+                <span id="total-messages-count" style="color: var(--primary); font-weight: 600;">0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>Ukuran Memori:</span>
+                <span id="memory-size" style="color: var(--primary); font-weight: 600;">0 KB</span>
+            </div>
+            <button id="clear-memory-btn" style="width: 100%; background: var(--secondary); color: white; border: none; padding: 8px; border-radius: 4px; margin-top: 10px; cursor: pointer;">
+                <i class="fas fa-trash"></i> Hapus Semua Memori
+            </button>
+        </div>
+    </div>
+
+    <!-- BAHASA UI -->
+    <div class="settings-item">
+        <label><i class="fas fa-globe"></i> Bahasa UI / Language</label>
+        <div class="lang-row">
+            <button class="lang-btn" id="lang-id-btn">🇮🇩 Indonesia</button>
+            <button class="lang-btn" id="lang-en-btn">🇬🇧 English</button>
+        </div>
+    </div>
+
+    <!-- NOTIFIKASI BROWSER -->
+    <div class="settings-item">
+        <label><i class="fas fa-bell"></i> Notifikasi Browser</label>
+        <button id="notif-btn" style="width:100%;background:var(--dark);color:var(--light);border:1px solid var(--border);padding:10px;border-radius:8px;cursor:pointer;font-size:13px;font-family:'Poppins',sans-serif;transition:all 0.3s;">
+            <i class="fas fa-bell"></i> Aktifkan Notifikasi
+        </button>
+        <p style="font-size:11px;color:var(--gray);margin-top:6px;"><i class="fas fa-info-circle"></i> Notifikasi Muncul Saat AI Menjawab & Tab Tidak Aktif</p>
+    </div>
+
+    <!-- PROFIL USER -->
+    <div class="settings-item">
+        <label><i class="fas fa-user-circle"></i> Your Profiles</label>
+        <div style="display:flex;align-items:center;gap:10px;background:var(--dark);padding:12px;border-radius:8px;margin-bottom:8px;">
+            <div id="settings-avatar-letter" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#E60000,#bc13fe);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:white;flex-shrink:0;text-transform:uppercase;">?</div>
+            <input type="text" id="settings-name-input" placeholder="Nama kamu..." maxlength="30"
+              style="flex:1;background:var(--darker);border:1px solid var(--border);border-radius:6px;padding:8px 10px;color:var(--light);font-size:13px;font-family:'Poppins',sans-serif;">
+        </div>
+        <button id="save-profile-btn" class="cp-save-btn"><i class="fas fa-save"></i> Simpan Nama</button>
+    </div>
+
+    <!-- CUSTOM SYSTEM PROMPT -->
+    <div class="settings-item">
+        <label><i class="fas fa-sliders-h"></i> Custom System Prompt <span id="cp-badge" class="cp-active-badge" style="display:none;"><i class="fas fa-bolt"></i> Aktif</span></label>
+        <p style="font-size:11px;color:var(--gray);margin-bottom:8px;"><i class="fas fa-info-circle"></i> Instruksi Khusus Yang Selalu Disertakan Di Setiap Chat. Contoh: "Selalu Jawab Dengan Bahasa Inggris".</p>
+        <textarea id="cp-textarea" class="cp-textarea" placeholder="Tulis instruksi khusus di sini... (kosongkan untuk reset)"></textarea>
+        <div class="cp-charcount"><span id="cp-charnum">0</span>/500</div>
+        <button id="cp-save-btn" class="cp-save-btn"><i class="fas fa-save"></i> Simpan Custom Prompt</button>
+        <button id="cp-reset-btn" class="cp-reset-btn"><i class="fas fa-undo"></i> Reset ke Default</button>
+    </div>
+
+    <!-- ══ CUSTOM AI NAME & AVATAR ══ -->
+    <div class="settings-item">
+        <label><i class="fas fa-robot" style="color:var(--primary);"></i> Custom AI Name & Avatar</label>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+            <div id="ai-avatar-preview" style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#bc13fe);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🤖</div>
+            <input id="ai-name-input" type="text" value="Necrosis AI" maxlength="30" placeholder="Nama AI kamu..." style="flex:1;background:var(--darker);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--light);font-family:Poppins,sans-serif;font-size:13px;outline:none;">
+        </div>
+        <div style="margin-bottom:10px;">
+            <label style="font-size:12px;color:var(--gray);display:block;margin-bottom:6px;">Pilih Avatar:</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button class="ai-avatar-opt" data-emoji="🤖" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--primary);background:rgba(230,0,0,0.15);font-size:18px;cursor:pointer;">🤖</button>
+                <button class="ai-avatar-opt" data-emoji="👾" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--dark);font-size:18px;cursor:pointer;">👾</button>
+                <button class="ai-avatar-opt" data-emoji="💀" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--dark);font-size:18px;cursor:pointer;">💀</button>
+                <button class="ai-avatar-opt" data-emoji="🦾" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--dark);font-size:18px;cursor:pointer;">🦾</button>
+                <button class="ai-avatar-opt" data-emoji="⚡" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--dark);font-size:18px;cursor:pointer;">⚡</button>
+                <button class="ai-avatar-opt" data-emoji="🔥" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--dark);font-size:18px;cursor:pointer;">🔥</button>
+                <button class="ai-avatar-opt" data-emoji="🧠" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--dark);font-size:18px;cursor:pointer;">🧠</button>
+                <button class="ai-avatar-opt" data-emoji="🐉" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--dark);font-size:18px;cursor:pointer;">🐉</button>
+            </div>
+        </div>
+        <button id="save-ai-custom-btn" style="width:100%;background:var(--primary);color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;font-weight:600;font-family:Poppins,sans-serif;font-size:13px;"><i class="fas fa-save"></i> Simpan</button>
+    </div>
+
+    <!-- ══ FOLLOW-UP QUESTIONS ══ -->
+    <div class="settings-item">
+        <label><i class="fas fa-question-circle" style="color:var(--primary);"></i> Follow-up Questions</label>
+        <div class="snow-toggle active" id="followup-toggle" style="cursor:pointer;">
+            <div class="snow-toggle-left"><i class="fas fa-lightbulb" style="color:var(--primary);"></i><span style="font-size:13px;">Saran pertanyaan lanjutan</span></div>
+            <div class="snow-toggle-status"></div>
+        </div>
+    </div>
+
+    <!-- ══ TYPING SOUND ══ -->
+    <div class="settings-item">
+        <label><i class="fas fa-volume-up" style="color:var(--primary);"></i> Typing Sound Effect</label>
+        <div class="snow-toggle" id="typing-sound-toggle" style="cursor:pointer;">
+            <div class="snow-toggle-left"><i class="fas fa-keyboard" style="color:var(--primary);"></i><span style="font-size:13px;">Suara ketikan AI</span></div>
+            <div class="snow-toggle-status"></div>
+        </div>
+    </div>
+
+    <!-- ══ TTS VOICE ══ -->
+    <div class="settings-item">
+        <label><i class="fas fa-headphones" style="color:var(--primary);"></i> Pilih Suara TTS</label>
+        <select id="tts-voice-select" style="width:100%;background:var(--darker);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--light);font-family:Poppins,sans-serif;font-size:13px;margin-bottom:8px;"><option value="">Default</option></select>
+        <button id="tts-test-btn" style="width:100%;background:var(--dark);border:1px solid var(--border);color:var(--light);padding:8px;border-radius:8px;cursor:pointer;font-size:13px;font-family:Poppins,sans-serif;">🔊 Test Suara</button>
+    </div>
+
+    <!-- ══ WAKE WORD ══ -->
+    <div class="settings-item">
+        <label><i class="fas fa-microphone-alt" style="color:var(--primary);"></i> Wake Word</label>
+        <div class="snow-toggle" id="wakeword-toggle" style="cursor:pointer;">
+            <div class="snow-toggle-left"><i class="fas fa-assistive-listening-systems" style="color:var(--primary);"></i><span style="font-size:13px;">Aktifkan "Hey Necrosis"</span></div>
+            <div class="snow-toggle-status"></div>
+        </div>
+    </div>
+
+    <!-- ══ QUICK REPLY TEMPLATES ══ -->
+    <div class="settings-item">
+        <label><i class="fas fa-bolt" style="color:var(--primary);"></i> Quick Reply Templates</label>
+        <textarea id="qr-textarea" style="width:100%;background:var(--darker);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--light);font-family:Poppins,sans-serif;font-size:12px;resize:vertical;min-height:80px;" placeholder="Satu template per baris...">Jelaskan Lebih Detail
+Berikan Contoh Kode
+Terjemahkan Ke Bahasa Indonesia
+Buat Versi Yang Lebih Detail.</textarea>
+        <button id="qr-save-btn" style="width:100%;background:var(--primary);color:white;border:none;padding:8px;border-radius:8px;cursor:pointer;font-family:Poppins,sans-serif;font-size:13px;margin-top:6px;font-weight:600;">Simpan Templates</button>
+    </div>
+
+</div>
+
+<!-- ===== NEW FEATURE PANELS v2.0 ===== -->
+
+<!-- ARTIFACT PANEL (hidden by default) -->
+<div id="artifact-panel">
+  <div id="artifact-header">
+    <i class="fas fa-code" style="color:var(--primary);"></i>
+    <span id="artifact-title">Artifact Preview</span>
+    <button id="artifact-run"><i class="fas fa-play"></i> Run</button>
+    <button id="artifact-close"><i class="fas fa-times"></i> Tutup</button>
+  </div>
+  <div id="artifact-tabs">
+    <div class="artifact-tab active" data-tab="code"><i class="fas fa-code"></i> Kode</div>
+    <div class="artifact-tab" data-tab="preview"><i class="fas fa-eye"></i> Preview</div>
+  </div>
+  <pre id="artifact-code-area"></pre>
+  <iframe id="artifact-preview-area" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+</div>
+
+<!-- PERSONA OVERLAY + PANEL (hidden by default) -->
+<div id="persona-overlay"></div>
+<div id="persona-panel">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+    <h3 style="color:var(--primary);font-size:16px;"><i class="fas fa-theater-masks"></i> Pilih Persona AI</h3>
+    <button id="persona-close-btn" style="background:none;border:none;color:var(--gray);font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+  </div>
+  <p style="color:var(--gray);font-size:12px;margin-bottom:4px;">Ubah karakter AI — Tidak Mengubah Batasan Keamanan</p>
+  <div class="persona-grid" id="persona-grid"></div>
+</div>
+
+<!-- PROJECTS OVERLAY + MODAL (hidden by default) -->
+<div id="projects-overlay"></div>
+<div id="projects-modal">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+    <h3 style="color:var(--primary);font-size:16px;"><i class="fas fa-folder-open"></i> Proyek & Memori</h3>
+    <button id="projects-close-btn" style="background:none;border:none;color:var(--gray);font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+  </div>
+  <p style="color:var(--gray);font-size:12px;margin-bottom:12px;">Proyek Aktif Akan Otomatis Ditambahkan Ke Setiap Chat Sebagai Konteks.</p>
+  <div id="projects-list"></div>
+  <div style="background:var(--dark);border-radius:10px;padding:14px;margin-top:12px;">
+    <p style="font-size:13px;font-weight:600;color:var(--primary);margin-bottom:10px;"><i class="fas fa-plus"></i> Buat Proyek Baru</p>
+    <input type="text" id="proj-name" class="proj-input" placeholder="Nama Proyek (cth: Coding Assistant)">
+    <textarea id="proj-prompt" class="proj-input" rows="3" placeholder="System Prompt (cth: Kamu adalah ahli Python yang selalu kasih kode siap pakai...)"></textarea>
+    <button id="proj-save-btn" style="width:100%;background:var(--primary);color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;font-weight:600;font-family:'Poppins',sans-serif;">
+      <i class="fas fa-save"></i> Simpan Proyek
+    </button>
+  </div>
+</div>
+
+<!-- BOOKMARKS PANEL (hidden by default) -->
+<div id="bookmarks-panel">
+  <div class="bm-header">
+    <h3><i class="fas fa-bookmark"></i> Pesan Tersimpan</h3>
+    <button class="bm-header-close" id="bm-close-btn">&times;</button>
+  </div>
+  <div class="bm-list" id="bm-list">
+    <p style="color:var(--gray);font-size:13px;text-align:center;padding:24px 12px;">Belum Ada Pesan Tersimpan.<br>Klik Icon 📌 Di Pesan AI Untuk Menyimpan.</p>
+  </div>
+</div>
+
+<div id="sidebar-overlay">
+    <div id="sidebar-content">
+        <div class="sidebar-header">
+        <button class="new-chat-btn">
+        <i class="fas fa-plus"></i> NewChats</button>
+        </div>
+
+        <!-- USER CARD -->
+        <div id="sidebar-user-card">
+          <div class="su-avatar" id="su-av">?</div>
+          <div class="su-info">
+            <div class="su-name" id="su-name">—</div>
+            <div class="su-status"><span class="su-dot"></span> Online</div>
+          </div>
+        </div>
+        
+        <div class="mode-switcher" style="padding: 10px 20px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px;">
+            <span style="font-size: 14px; font-weight: 600; color: var(--light);">PILIH MODE :</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button id="mode-necrosis_ai-btn" class="mode-btn" data-mode="necrosis_ai" title="Mode Necrosis AI: Asisten Cybercrime Black-Hat (Berbahaya!)">
+                    <i class="fas fa-dragon"></i> Necrosis AI
+                </button>
+                 <button id="mode-programmer-btn" class="mode-btn" data-mode="programmer" title="Mode Programmer: Perbaikan kode dan debugging.">
+                    <i class="fas fa-terminal"></i> Programer
+                </button>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button id="mode-thinking-btn" class="mode-btn" data-mode="thinking" title="Mode Berpikir: Analisis mendalam dengan langkah-langkah logis">
+                    <i class="fas fa-brain"></i> Berpikir
+                </button>
+                <button id="mode-search-btn" class="mode-btn" data-mode="search" title="Mode Pencarian: Mencari informasi dari berbagai sumber">
+                    <i class="fas fa-globe"></i> Search
+                </button>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button id="mode-curhat-btn" class="mode-btn" data-mode="curhat" title="Mode Curhat: AI ramah dan membantu.">
+                    <i class="fas fa-dove"></i> Curhat
+                </button>
+                <!-- MODE CREATE IMG BARU -->
+                <button id="mode-createimg-btn" class="mode-btn" data-mode="createimg" title="Mode Create Image: Generate gambar seperti Gemini AI">
+                    <i class="fas fa-image"></i> Create Img
+                </button>
+            </div>
+        </div>
+        
+        <!-- FITUR BARU v2.0 -->
+        <div class="new-feat-section">
+            <div class="new-feat-label">Upgrade Feature In V2</div>
+            <div class="new-feat-row">
+                <button class="nf-btn" id="btn-persona"><i class="fas fa-theater-masks"></i>Persona</button>
+                <button class="nf-btn" id="btn-projects"><i class="fas fa-folder-open"></i>Proyek</button>
+                <button class="nf-btn" id="btn-bookmarks"><i class="fas fa-bookmark"></i>Pin</button>
+                <button class="nf-btn" id="btn-artifact-help"><i class="fas fa-code"></i>Artifact</button>
+            </div>
+        </div>
+        
+        <!-- TOOLS BUTTON -->
+        <div class="tools-section" style="padding: 10px 20px; border-bottom: 1px solid var(--border); margin-bottom: 10px;">
+            <button id="open-tools-btn" class="sidebar-action-btn">
+                <i class="fas fa-tools"></i> Tools
+            </button>
+        </div>
+        
+        <!-- SETTINGS BUTTON -->
+        <div class="settings-section" style="padding: 10px 20px; border-bottom: 1px solid var(--border); margin-bottom: 10px;">
+            <button id="sidebar-settings-btn" class="sidebar-action-btn">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+        </div>
+        
+        <!-- REPORT BUG BUTTON - SAMA PERSIS KAYA TOOLS & SETTINGS -->
+        <!-- SUMMARIZE CHAT -->
+        <div style="padding:10px 20px;border-bottom:1px solid var(--border);margin-bottom:10px;">
+            <button id="summarize-chat-btn" class="sidebar-action-btn" style="border-color:#00c864;color:#00c864;">
+                <i class="fas fa-compress-alt"></i> Ringkas Chat
+            </button>
+        </div>
+        <!-- BATCH EXPORT -->
+        <div style="padding:10px 20px;border-bottom:1px solid var(--border);margin-bottom:10px;">
+            <button id="batch-export-btn" class="sidebar-action-btn" style="border-color:#00c864;color:#00c864;">
+                <i class="fas fa-file-archive"></i> Batch Export
+            </button>
+        </div>
+        <!-- SHORTCUT PANEL -->
+        <div style="padding:10px 20px;border-bottom:1px solid var(--border);margin-bottom:10px;">
+            <button id="open-shortcut-btn" class="sidebar-action-btn">
+                <i class="fas fa-keyboard"></i> Shortcut Panel
+            </button>
+        </div>
+        <div class="bug-section" style="padding: 10px 20px; border-bottom: 1px solid var(--border); margin-bottom: 10px;">
+            <button id="report-bug-btn" class="sidebar-action-btn">
+                <i class="fas fa-bug"></i> Report Bug & Saran
+            </button>
+        </div>
+        
+        <!-- UPGRADE PREMIUM BUTTON - SERAGAM JUGA -->
+        <div class="premium-section" style="padding: 10px 20px; border-bottom: 1px solid var(--border); margin-bottom: 10px;">
+            <button id="upgrade-premium-btn" class="premium-btn">
+                <i class="fas fa-crown"></i> Upgrade Premium
+            </button>
+        </div>
+        
+        <!-- Chat history hidden — semua fitur ada di panel Semua Obrolan -->
+        <div class="chat-history" style="display:none;"></div>
+        <!-- Elemen delete tetap ada buat compatibility JS -->
+        <div id="delete-history-area" style="display:none;">
+            <button id="delete-history-btn"></button>
+            <div id="delete-confirmation" style="display:none;">
+                <button id="confirm-delete-btn"></button>
+                <button id="cancel-delete-btn"></button>
+            </div>
+        </div>
+        <input type="hidden" id="chat-search-input">
+
+        <!-- FOOTER SOCIAL MEDIA -->
+        <div class="social-footer">
+            <a href="https://t.me/RiooDev" target="_blank" style="color: #0088cc;">
+                <i class="fab fa-telegram"></i> Telegram Developer
+            </a>
+            <a href="https://github.com/RajaModders" target="_blank" style="color: #f0f0f0;">
+                <i class="fab fa-github"></i> Github Developer
+            </a>
+            <a href="https://t.me/InfoScNecrosis" target="_blank" style="color: #0088cc;">
+                <i class="fab fa-telegram"></i> Official Channel
+            </a>
+            <div class="created-by">
+                <span style="color: var(--gray);">Created By: RajaStarboy</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-content">
+    <header>
+      <button id="menu-toggle-btn" aria-label="OPEN RIWAYAT CHAT"><i class="fas fa-bars-staggered"></i></button>
+      <i class="fas fa-robot"><u> Necrosis AI</u></i>
+      
+      <!-- Status Koneksi Indicator -->
+      <div id="connection-status">
+          <span class="status-dot online"></span>
+          <span id="connection-text"></span>
+      </div>
+      
+      <button id="audio-toggle-btn" aria-label="Kontrol Audio">
+          <i class="fas fa-headphones"></i>
+      </button>
+      
+    </header>
+    <audio id="background-audio" loop>
+        <source src="https://files.catbox.moe/09n5a7.mp3" type="audio/mp3">
+        Browser Anda Tidak Mendukung Elemen Audio.
+    </audio>
+
+    <div id="tools-page" style="display: none; flex: 1; padding: 20px; flex-direction: column; overflow-y: auto;">
+        <button id="back-to-chat-btn" class="new-chat-btn" style="margin-bottom: 20px; align-self: flex-start; background: var(--secondary);"><i class="fas fa-arrow-left"></i> Back To Chats</button>
+        
+        <h2 style="color: var(--primary); margin-bottom: 20px;"><i class="fas fa-tools"></i> Tools</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;">
+            <button id="tool-trackip-btn" class="tool-card"><i class="fas fa-crosshairs"></i> Trackings IP</button>
+            <button id="tool-myip-btn" class="tool-card"><i class="fas fa-earth-americas"></i> Cek IP Saya</button>
+            <button id="tool-bot-attack-btn" class="tool-card"><i class="fas fa-bomb"></i> Bots Attack</button>
+            <button id="tool-ngl-spam-btn" class="tool-card"><i class="fas fa-envelope-circle-check"></i>Spam Ngl</button>
+        </div>
+        
+        <div id="tool-input-area" style="display: none; background: var(--chat-bg-ai); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+            </div>
+
+        <div id="tool-output-area" style="display: none; background: var(--chat-bg-ai); padding: 20px; border-radius: 12px; white-space: pre-wrap; word-wrap: break-word; font-family: monospace;">
+            </div>
+    </div>
+    <div id="chat-container" aria-live="polite" aria-atomic="false">
+        </div>
+    
+    <!-- EDIT INDICATOR -->
+    <div id="edit-indicator" style="display: none;">
+        <i class="fas fa-edit"></i>
+        <span>Anda Sedang Mengedit Pesan. Tekan Ctrl+Enter Untuk Mengirim Ulang.</span>
+        <button id="cancel-edit-btn">Batal Edit</button>
+    </div>
+    
+    <!-- MODE INDICATORS -->
+    <div id="mode-thinking-indicator" class="thinking-indicator" style="display: none; margin: 0 20px 10px;">
+        <i class="fas fa-brain"></i>
+        <span>Mode Berpikir Aktif - Menganalisis Pertanyaan Anda...</span>
+        <div class="thinking-dots">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+    
+    <div id="mode-search-indicator" class="search-indicator" style="display: none; margin: 0 20px 10px;">
+        <i class="fas fa-globe"></i>
+        <span>Mode Pencarian Aktif - Mencari Informasi Dari Berbagai Sumber</span>
+        <div class="search-pulse"></div>
+    </div>
+    
+    <!-- MODE CREATE IMG INDICATOR -->
+    <div id="mode-createimg-indicator" class="search-indicator" style="display: none; margin: 0 20px 10px; background: linear-gradient(135deg, rgba(255, 0, 255, 0.1) 0%, rgba(128, 0, 128, 0.1) 100%); border-left: 4px solid #ff00ff;">
+        <i class="fas fa-image"></i>
+        <span>Mode Create Image Aktif - Siap Generate Gambar</span>
+        <div class="search-pulse" style="background: #ff00ff;"></div>
+    </div>
+    
+    <div id="file-preview" aria-label="Preview File Yang Diunggah"></div>
+
+    <!-- INPUT AREA — CLAUDE AI STYLE -->
+    <div id="input-area">
+      <input type="file" id="file-input" multiple accept="image/*,.txt,.js,.py,.html,.css,.json,.md,.xml,.csv" />
+
+      <!-- Wrapper utama — kotak rounded seperti Claude -->
+      <div id="claude-input-box">
+
+        <!-- Textarea -->
+        <textarea id="prompt-input" class="emoji-input" rows="1"
+          placeholder="Tanya ke Necrosis AI..."
+          aria-multiline="true"></textarea>
+
+        <!-- Baris bawah: kiri = (+) | kanan = model + voice + magic + send -->
+        <div id="claude-bottom-row">
+
+          <!-- KIRI: Tombol (+) untuk upload -->
+          <div id="claude-left-btns">
+            <button id="upload-btn" aria-label="Upload file/gambar" title="Lampirkan file atau gambar">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+
+          <!-- KANAN: Model selector + voice + magic + send -->
+          <div id="claude-right-btns">
+
+            <!-- Voice -->
+            <button id="voice-btn" title="Voice Input">
+              <i class="fas fa-microphone"></i>
+            </button>
+
+            <!-- Prompt optimizer -->
+            <button id="prompt-opt-btn" title="Optimize prompt">
+              <i class="fas fa-magic"></i>
+            </button>
+
+            <!-- Model Selector -->
+            <div id="model-selector-wrap" style="position:relative;">
+              <button id="model-selector-btn" title="Pilih Model AI">
+                <i class="fas fa-microchip"></i>
+                <span id="model-label-display">1.5-Beta</span>
+                <i class="fas fa-chevron-up" style="font-size:9px;"></i>
+              </button>
+              <div id="model-dropdown" style="display:none;position:fixed;background:var(--sidebar-bg);border:1px solid var(--border);border-radius:12px;padding:6px;min-width:210px;box-shadow:0 8px 30px rgba(0,0,0,0.6);z-index:9999;">
+                <div style="font-size:10px;color:var(--gray);padding:4px 8px 6px;border-bottom:1px solid var(--border);margin-bottom:4px;letter-spacing:1px;">PILIH MODEL AI</div>
+                <div class="model-opt" data-model="1.5-Beta" data-full="Necrosis 1.5-Beta" style="padding:8px 10px;border-radius:8px;cursor:pointer;font-size:12px;transition:background 0.2s;display:flex;align-items:center;gap:8px;">
+                  <i class="fas fa-bolt" style="color:#ff9900;font-size:11px;"></i>
+                  <div><div style="font-weight:600;color:var(--light);">Necrosis 1.5-Beta</div><div style="font-size:10px;color:var(--gray);">Cepat · Ringan · Cocok Harian</div></div>
+                </div>
+                <div class="model-opt" data-model="N1.0-F" data-full="Necrosis 1.0-Flash" style="padding:8px 10px;border-radius:8px;cursor:pointer;font-size:12px;transition:background 0.2s;display:flex;align-items:center;gap:8px;">
+                  <i class="fas fa-zap" style="color:#00ccff;font-size:11px;"></i>
+                  <div><div style="font-weight:600;color:var(--light);">Necrosis 1.0-Flash</div><div style="font-size:10px;color:var(--gray);">Ultrafast · Minimal · Efisien</div></div>
+                </div>
+                <div class="model-opt" data-model="N2.0-Pro" data-full="Necrosis 2.0-Pro" style="padding:8px 10px;border-radius:8px;cursor:pointer;font-size:12px;transition:background 0.2s;display:flex;align-items:center;gap:8px;">
+                  <i class="fas fa-crown" style="color:#ffd700;font-size:11px;"></i>
+                  <div><div style="font-weight:600;color:var(--light);">Necrosis 2.0-Pro</div><div style="font-size:10px;color:var(--gray);">Premium · Deep Reasoning</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Send button — bulat, kanan paling ujung -->
+            <button id="send-btn" disabled aria-label="Kirim pesan">
+              <i class="fas fa-arrow-up"></i>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shortcut-hint">Necrosis AI bisa keliru. Periksa kembali responsnya.</div>
+</div>
+
+<!-- NOTIFIKASI SUCCESS COPIED -->
+<div id="copy-notification">
+    <i class="fas fa-check-circle"></i>
+    <span>Coppied to Clipboard!</span>
+</div>
+
+<div id="audio-selection-overlay" style="display: none;">
+    <div class="audio-modal-content">
+        <h3><i class="fas fa-music"></i> Lagu</h3>
+        <p class="audio-modal-note">Pilih Lagu Untuk Diputar</p>
+        <div id="song-list">
+            </div>
+        <button id="close-audio-modal-btn" class="audio-close-btn">Closed.</button>
+    </div>
+</div>
+
+<div id="modal-notification" style="display: none;">
+    <div class="modal-content">
+        <h3><i class="fas fa-check-circle"></i> Berhasil!</h3>
+        <p>Semua Riwayat Chat Telah Dihapus</p>
+        <button id="close-modal-btn">Oke</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+<!-- =====================================================
+     NECROSIS AI — PLUGIN LOADER v2.0
+     Semua Plugin & Tools Dimuat Otomatis Di Sini
+     ===================================================== -->
+
+<!-- ── TOOLS (Fitur Spesifik Di Halaman Tools) ────────── -->
+<script src="tools/track-ip.js"></script>
+<script src="tools/my-ip.js"></script>
+<script src="tools/bot-attack.js"></script>
+<script src="tools/ngl-spam.js"></script>
+
+<!-- ── PLUGINS (Fitur Tambahan Global) ────────────────── -->
+<script src="plugins/image-generator.js"></script>
+<script src="plugins/code-generator.js"></script>
+<script src="plugins/web-search.js"></script>
+<script src="plugins/file-reader.js"></script>
+<script src="plugins/text-to-speech.js"></script>
+<script src="plugins/voice-input.js"></script>
+<script src="plugins/wake-word.js"></script>
+<script src="plugins/translator.js"></script>
+<script src="plugins/export-chat.js"></script>
+<script src="plugins/summarizer.js"></script>
+<script src="plugins/persona.js"></script>
+<script src="plugins/bookmarks.js"></script>
+<script src="plugins/projects.js"></script>
+<script src="plugins/quick-reply.js"></script>
+<script src="plugins/shortcut-panel.js"></script>
+<script src="plugins/api-fallback.js"></script>
+<script src="plugins/real-web-search.js"></script>
+<script src="plugins/ai-file-sender.js"></script>
+<script src="plugins/syntax-highlight.js"></script>
+<script src="plugins/autocomplete.js"></script>
+<script src="script_fixes.js"></script>
+</body>
+</html>
